@@ -1,7 +1,66 @@
+/* Header Styling */
 .header {
-  background-color: #4CAF50;
+  background: linear-gradient(to right, #2b8d94, #286786); /* Gradient background */
   color: white;
-  padding: 20px;
+  padding: 20px 40px;
   text-align: center;
+  border-bottom: 3px solid #473a74; /* Bottom border for a sleek effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
-  
+
+.header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.connect-wallet-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.connect-wallet-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+.connect-wallet-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); /* Focus ring for accessibility */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .connect-wallet-button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
