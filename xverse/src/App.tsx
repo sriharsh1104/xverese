@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import MainLayout from "./Layouts/MainLayout/MainLayout";
+import AuthLayout from "./Layouts/AuthLayout/AuthLayout";
+import Dashboard from "./Component/Private/Dashboard/Dashboard";
+import Settings from "./Component/Private/Setting/Setting";
+import Profile from "./Component/Private/Profile/Profile";
+import SignIn from "./Component/Public/SignIn/SignIn";
+import SignUp from "./Component/Public/SIgnUp/SIgnUp";
 
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        {/* Authenticated Routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <MainLayout>
+              <Dashboard />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <MainLayout>
+              <Settings />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <MainLayout>
+              <Profile />
+            </MainLayout>
+          }
+        />
 
-export default App
+        {/* Authentication Routes */}
+        <Route
+          path="/"
+          element={
+            <AuthLayout>
+              <SignIn />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <AuthLayout>
+              <SignUp />
+            </AuthLayout>
+          }
+        />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
